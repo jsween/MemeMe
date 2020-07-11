@@ -35,7 +35,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
         NSAttributedString.Key.font: UIFont(name: "HelveticaNeue-CondensedBlack", size: 40)!,
-        NSAttributedString.Key.strokeWidth:  -4.0
+        NSAttributedString.Key.strokeWidth:  -4.2
     ]
     
     // MARK: Methods
@@ -50,7 +50,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         
         subscribeToKeyboardNotifications()
-        resetUI()
+        configureTF(textField: topTF, text: topStr)
+        configureTF(textField: bottomTF, text: bottomStr)
         cameraBtn.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
@@ -108,11 +109,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            imageIV.image = image
-            shareBtn.isEnabled = true
+        dismiss(animated: true)
+        guard let image = info[.originalImage] as? UIImage else {
+            print("No image found")
+            return
         }
-            dismiss(animated: true, completion: nil)
+        imageIV.image = image
+        shareBtn.isEnabled = true
     }
     
     func resetUI() {
@@ -120,6 +123,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         configureTF(textField: bottomTF, text: bottomStr)
         shareBtn.isEnabled = false
         imageIV.image = nil
+        print("Reset UI called...")
     }
     
     // MARK: - Configure Elements
@@ -167,9 +171,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         let imagePkr = UIImagePickerController()
-        imagePkr.delegate = self
         imagePkr.sourceType = .camera
-        present(imagePkr, animated: true, completion: nil)
+        imagePkr.delegate = self
+        present(imagePkr, animated: true)
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
