@@ -111,7 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true)
         guard let image = info[.originalImage] as? UIImage else {
-            self.showAlert(<#T##title: String##String#>, message: <#T##String#>)
+            self.showAlert(AlertMsgs.ImportPhotoTitle, message: AlertMsgs.ImportPhotoMessage)
             return
         }
         imageIV.image = image
