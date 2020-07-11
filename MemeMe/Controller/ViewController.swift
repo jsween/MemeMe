@@ -23,7 +23,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK: - Variables
     
-    var activeTextField: UITextField? = nil
     var memeImage: UIImage! = nil
     var meme: Meme? = nil
     
@@ -31,6 +30,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     let bottomStr: String = "BOTTOM"
     
     // MARK: - Meme Text Attributes
+    
     let memeTextAttributes: [NSAttributedString.Key: Any] = [
         NSAttributedString.Key.strokeColor: UIColor.black,
         NSAttributedString.Key.foregroundColor: UIColor.white,
@@ -50,9 +50,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillAppear(animated)
         
         subscribeToKeyboardNotifications()
-        configureTF(textField: topTF, text: topStr)
-        configureTF(textField: bottomTF, text: bottomStr)
-        shareBtn.isEnabled = false
+        resetUI()
         cameraBtn.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
     }
     
@@ -70,7 +68,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func generateMemedImage() -> UIImage {
         // Hide Nav and Toolbar
-        print("Hiding bars...")
         showHideBars(hide: true)
         
         // Render view to an image
@@ -85,18 +82,25 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
     }
     
+    // Show alert to user
+    func showAlert(_ title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: AlertMsgs.DismissAlert, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    // MARK: - Configure UI
+    
     func showHideBars(hide: Bool) {
         navBar.isHidden = hide
         toolbar.isHidden = hide
     }
     
-    // MARK: - Configure UI
-    
     func configureTF(textField tf: UITextField, text txt: String) {
         tf.text = txt
         tf.delegate = self
-        tf.textAlignment = .center
         tf.defaultTextAttributes = memeTextAttributes
+        tf.textAlignment = .center
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
@@ -109,6 +113,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             shareBtn.isEnabled = true
         }
             dismiss(animated: true, completion: nil)
+    }
+    
+    func resetUI() {
+        configureTF(textField: topTF, text: topStr)
+        configureTF(textField: bottomTF, text: bottomStr)
+        shareBtn.isEnabled = false
+        imageIV.image = nil
     }
     
     // MARK: - Configure Elements
@@ -162,11 +173,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
-        topTF.text = topStr
-        bottomTF.text = bottomStr
-        imageIV.image = nil
+        resetUI()
         memeImage = nil
-        shareBtn.isEnabled = false
     }
     
     @IBAction func shareMemePressed(_ sender: Any) {
@@ -178,7 +186,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             if success {
                 self.meme = self.saveMeme()
             } else {
-                //TODO: Show UI Alert
+                self.showAlert(AlertMsgs.SharingMemeTitle, message: AlertMsgs.SharingMemeMessage)
             }
         }
         self.present(aVC, animated: true, completion: nil)

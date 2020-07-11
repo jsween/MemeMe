@@ -14,6 +14,7 @@
 		F23BAF8A24B8F9FB005C72EF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F23BAF8924B8F9FB005C72EF /* Assets.xcassets */; };
 		F23BAF8D24B8F9FB005C72EF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F23BAF8B24B8F9FB005C72EF /* LaunchScreen.storyboard */; };
 		F23BAF9824B91E87005C72EF /* Meme.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23BAF9724B91E87005C72EF /* Meme.swift */; };
+		F23BAF9A24BA366A005C72EF /* AlertMsgs.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23BAF9924BA366A005C72EF /* AlertMsgs.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		F23BAF8C24B8F9FB005C72EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F23BAF8E24B8F9FB005C72EF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F23BAF9724B91E87005C72EF /* Meme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meme.swift; sourceTree = "<group>"; };
+		F23BAF9924BA366A005C72EF /* AlertMsgs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertMsgs.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				F23BAF9724B91E87005C72EF /* Meme.swift */,
+				F23BAF9924BA366A005C72EF /* AlertMsgs.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23BAF9A24BA366A005C72EF /* AlertMsgs.swift in Sources */,
 				F23BAF8524B8F9FA005C72EF /* ViewController.swift in Sources */,
 				F23BAF9824B91E87005C72EF /* Meme.swift in Sources */,
 				F23BAF8124B8F9FA005C72EF /* AppDelegate.swift in Sources */,
