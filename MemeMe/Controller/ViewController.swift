@@ -111,7 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         dismiss(animated: true)
         guard let image = info[.originalImage] as? UIImage else {
-            print("No image found")
+            self.showAlert(<#T##title: String##String#>, message: <#T##String#>)
             return
         }
         imageIV.image = image
@@ -123,7 +123,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         configureTF(textField: bottomTF, text: bottomStr)
         shareBtn.isEnabled = false
         imageIV.image = nil
-        print("Reset UI called...")
     }
     
     // MARK: - Configure Elements

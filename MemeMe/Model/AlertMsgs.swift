@@ -11,5 +11,7 @@ import Foundation
 struct AlertMsgs {
     static let DismissAlert = "Dismiss"
     static let SharingMemeTitle = "Sharing Failed"
-    static let SharingMemeMessage = "Error Sharing the Created Meme"
+    static let SharingMemeMessage = "Error Sharing the Created Meme."
+    static let ImportPhotoTitle = "Using a Pic Failed"
+    static let ImportPhotoMessage = "Error Importing the Photo. Please Check the Format Type."
 }
