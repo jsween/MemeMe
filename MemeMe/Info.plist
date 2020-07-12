@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>MemeMe requires access to your Photo Library to import Photos. Would you like to grant MemeMe access?</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Meme requires access to your camera to take pics. Would you like to allow Meme access to your camera?</string>
+	<string>MemeMe requires access to your camera to take pics. Would you like to grant MemeMe access?</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
