@@ -83,6 +83,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return memedImage
     }
     
+    func chooseImageFromCameraOrPhoto(source: UIImagePickerController.SourceType) {
+        let pickerController = UIImagePickerController()
+        pickerController.delegate = self
+        pickerController.allowsEditing = true
+        pickerController.sourceType = source
+        present(pickerController, animated: true, completion: nil)
+    }
+    
     // Show alert to user
     func showAlert(_ title: String, message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -162,15 +170,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: Actions
     
     @IBAction func selectAnImage(_ sender: UIBarButtonItem) {
-        let imagePkr = UIImagePickerController()
-        imagePkr.delegate = self
         // tags: 0-camera  1-album
         if sender.tag == 0 {
-            imagePkr.sourceType = .camera
+            chooseImageFromCameraOrPhoto(source: .camera)
         } else if sender.tag == 1 {
-            imagePkr.sourceType = .photoLibrary
+            chooseImageFromCameraOrPhoto(source: .photoLibrary)
         }
-        present(imagePkr, animated: true, completion: nil)
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
@@ -186,7 +191,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             (activity, success, items, error) in
             if success {
                 self.meme = self.saveMeme()
-            } else {
+            } else if error != nil {
                 self.showAlert(AlertMsgs.SharingMemeTitle, message: AlertMsgs.SharingMemeMessage)
             }
         }
