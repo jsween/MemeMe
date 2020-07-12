@@ -161,18 +161,16 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK: Actions
     
-    @IBAction func pickAnImageFromAlbum(_ sender: Any) {
+    @IBAction func selectAnImage(_ sender: UIBarButtonItem) {
         let imagePkr = UIImagePickerController()
         imagePkr.delegate = self
-        imagePkr.sourceType = .photoLibrary
+        // tags: 0-camera  1-album
+        if sender.tag == 0 {
+            imagePkr.sourceType = .camera
+        } else if sender.tag == 1 {
+            imagePkr.sourceType = .photoLibrary
+        }
         present(imagePkr, animated: true, completion: nil)
-    }
-    
-    @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePkr = UIImagePickerController()
-        imagePkr.sourceType = .camera
-        imagePkr.delegate = self
-        present(imagePkr, animated: true)
     }
     
     @IBAction func resetBtnPressed(_ sender: Any) {
