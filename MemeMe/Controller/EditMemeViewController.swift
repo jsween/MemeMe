@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     // MARK: Outlets
     
     @IBOutlet weak var navBar: UINavigationBar!
@@ -64,7 +64,12 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     // MARK: - Helpers
     
     func saveMeme() -> Meme {
-        return Meme(textTop: topTF.text ?? "Error", textBottom: bottomTF.text ?? "Error", imageOrigninal: imageIV.image!, imageEdited: memeImage)
+        
+        let meme = Meme(textTop: topTF.text!, textBottom: bottomTF.text!, imageOrginal: imageIV.image!, imageEdited: memeImage)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.memes.append(meme)
+        
+        return meme
     }
     
     func generateMemedImage() -> UIImage {

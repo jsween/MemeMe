@@ -11,6 +11,6 @@ import UIKit
 struct Meme {
     let textTop: String
     let textBottom: String
-    let imageOrigninal: UIImage
+    let imageOrginal: UIImage
     let imageEdited: UIImage
 }
