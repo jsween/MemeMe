@@ -10,5 +10,8 @@ import Foundation
 
 struct K {
     static let reuseableTableViewCellId = "MemeCell"
-    static let reuseableCollectionCellId = "MemeCollectionCell"
+    static let reuseableCollectionCellId = "MemeCVCell"
+    static let memeDetailImageViewId = "MemeDetailViewController"
+    static let goToDetailsSegue = "goToMemeDetails"
+    static let goToDetailsFromCVSegue = "cvToDetailsSegue"
 }
