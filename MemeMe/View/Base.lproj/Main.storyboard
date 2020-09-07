@@ -50,7 +50,13 @@
                             <outlet property="delegate" destination="xj4-5M-hCZ" id="FZ7-U7-oLi"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="7G6-Oc-V4u"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="7G6-Oc-V4u">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="mz1-Bg-y4R">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="xj4-5M-hCZ" id="peB-EY-og2"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="SrR-kh-MST" kind="show" identifier="goToMemeDetails" id="AL0-AC-GLt"/>
                     </connections>
@@ -156,7 +162,13 @@
                             <outlet property="delegate" destination="a59-Q4-Qf2" id="egG-1Y-2M7"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="U6J-eP-kqL"/>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="U6J-eP-kqL">
+                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="hCv-V3-nAV">
+                            <connections>
+                                <action selector="addButtonPressed:" destination="a59-Q4-Qf2" id="QdL-Cs-IU3"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flowLayout" destination="ZFv-Pf-2mC" id="qqb-Na-QHy"/>
                         <segue destination="SrR-kh-MST" kind="show" identifier="cvToDetailsSegue" id="iG7-0T-Bmb"/>
@@ -169,7 +181,7 @@
         <!--Edit Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditMemeViewController" id="BYZ-38-t0r" customClass="EditMemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -267,11 +279,12 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iG7-0T-Bmb"/>
+        <segue reference="AL0-AC-GLt"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="96"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="rectangle.grid.1x2.fill" catalog="system" width="128" height="101"/>
         <image name="rectangle.grid.2x2.fill" catalog="system" width="128" height="99"/>
         <image name="square.and.arrow.up.fill" catalog="system" width="115" height="128"/>

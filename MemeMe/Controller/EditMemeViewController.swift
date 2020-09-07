@@ -186,6 +186,7 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     @IBAction func resetBtnPressed(_ sender: Any) {
         resetUI()
         memeImage = nil
+        dismiss(animated: true, completion: nil)
     }
     
     @IBAction func shareMemePressed(_ sender: Any) {

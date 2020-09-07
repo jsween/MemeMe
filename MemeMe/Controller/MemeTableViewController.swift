@@ -47,7 +47,6 @@ class MemeTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.goToDetailsSegue, sender: self)
-        print("segue completed")
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,6 +56,15 @@ class MemeTableViewController: UITableViewController {
 //        if let indexPath = tableView.indexPathForSelectedRow {
 //            destinationVC.selectedCategory = categories?[indexPath.row]
 //        }
+    }
+    
+    // MARK: - Navigation
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newMemeVC = storyboard.instantiateViewController(withIdentifier: K.editMemeId)
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [newMemeVC]
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
 
 }

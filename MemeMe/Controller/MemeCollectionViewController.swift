@@ -25,8 +25,6 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,7 +39,7 @@ class MemeCollectionViewController: UICollectionViewController {
         collectionView?.reloadData()
     }
 
-    // MARK: UICollectionViewDataSource
+    // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tests.count
@@ -62,6 +60,15 @@ class MemeCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         performSegue(withIdentifier: K.goToDetailsFromCVSegue, sender: self)
+    }
+    
+    // MARK: - Navigation
+    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let newMemeVC = storyboard.instantiateViewController(withIdentifier: K.editMemeId)
+        let navigationController = UINavigationController()
+        navigationController.viewControllers = [newMemeVC]
+        self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
     
 
