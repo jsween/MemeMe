@@ -65,16 +65,14 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     
     func saveMeme() -> Meme? {
         
-        if let image = imageIV.image {
-            let meme = Meme(textTop: topTF.text!, textBottom: bottomTF.text!, imageOrginal: image, imageEdited: memeImage)
+        let image = imageIV.image ?? UIImage(named: "default")
+            let meme = Meme(textTop: topTF.text!, textBottom: bottomTF.text!, imageOrginal: image!, imageEdited: memeImage)
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.memes.append(meme)
             print("meme appended")
             
             return meme
-        }
         
-        return nil
     }
     
     func generateMemedImage() -> UIImage {
@@ -198,18 +196,25 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
         memeImage = generateMemedImage()
         let aVC = UIActivityViewController(activityItems: [memeImage!], applicationActivities: nil)
         aVC.popoverPresentationController?.sourceView = self.view
-        aVC.completionWithItemsHandler = {
-            (activity, success, items, error) in
+//        aVC.completionWithItemsHandler = {
+//            (activity, success, items, error) in
+//            if success {
+//                self.meme = self.saveMeme()
+//            } else if error != nil {
+//                self.showAlert(AlertMsgs.SharingMemeTitle, message: AlertMsgs.SharingMemeMessage)
+//            }
+//        }
+//        self.present(aVC, animated: true, completion: nil)
+//        aVC.completionWithItemsHandler = {
+//            (activity, success, items, error) in
+//            self.dismiss(animated: true, completion: nil)
+//        }
+        self.present(aVC, animated: true, completion: nil)
+        aVC.completionWithItemsHandler = {(activity, success, items, error) in
             if success {
                 self.meme = self.saveMeme()
-            } else if error != nil {
-                self.showAlert(AlertMsgs.SharingMemeTitle, message: AlertMsgs.SharingMemeMessage)
+                self.dismiss(animated: true, completion: nil)
             }
-        }
-        self.present(aVC, animated: true, completion: nil)
-        aVC.completionWithItemsHandler = {
-            (activity, success, items, error) in
-            self.dismiss(animated: true, completion: nil)
         }
     }
 }

@@ -162,13 +162,7 @@
                             <outlet property="delegate" destination="a59-Q4-Qf2" id="egG-1Y-2M7"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" title="Sent Memes" id="U6J-eP-kqL">
-                        <barButtonItem key="rightBarButtonItem" image="plus" catalog="system" id="hCv-V3-nAV">
-                            <connections>
-                                <action selector="addButtonPressed:" destination="a59-Q4-Qf2" id="QdL-Cs-IU3"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Sent Memes" id="U6J-eP-kqL"/>
                     <connections>
                         <outlet property="flowLayout" destination="ZFv-Pf-2mC" id="qqb-Na-QHy"/>
                         <segue destination="SrR-kh-MST" kind="show" identifier="cvToDetailsSegue" id="iG7-0T-Bmb"/>

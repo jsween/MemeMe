@@ -67,5 +67,4 @@ class MemeTableViewController: UITableViewController {
         navigationController.viewControllers = [newMemeVC]
         self.navigationController?.present(navigationController, animated: true, completion: nil)
     }
-
 }

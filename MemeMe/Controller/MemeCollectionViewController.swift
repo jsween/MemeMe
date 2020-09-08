@@ -38,7 +38,12 @@ class MemeCollectionViewController: UICollectionViewController {
         
         collectionView?.reloadData()
         print("There are \(memes.count) memes")
+        
+        // Add createMeme button in tab bar
+        let rtBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MemeCollectionViewController.navigateToMemeEditor))
+        navigationItem.setRightBarButton(rtBarButtonItem, animated: true)
 
+        collectionView?.reloadData()
     }
 
     // MARK: - UICollectionViewDataSource
@@ -65,13 +70,10 @@ class MemeCollectionViewController: UICollectionViewController {
     }
     
     // MARK: - Navigation
-    @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let newMemeVC = storyboard.instantiateViewController(withIdentifier: K.editMemeId)
-        let navigationController = UINavigationController()
-        navigationController.viewControllers = [newMemeVC]
-        self.navigationController?.present(navigationController, animated: true, completion: nil)
-    }
     
+    @objc func navigateToMemeEditor() {
+        let memeEditorController = storyboard?.instantiateViewController(withIdentifier: K.editMemeId) as! EditMemeViewController
+        self.present(memeEditorController, animated: true, completion: nil)
+    }
 
 }
