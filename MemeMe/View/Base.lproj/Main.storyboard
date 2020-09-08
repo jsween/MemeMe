@@ -57,9 +57,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <connections>
-                        <segue destination="SrR-kh-MST" kind="show" identifier="goToMemeDetails" id="AL0-AC-GLt"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLR-Pp-Rjx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -74,7 +71,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ss5-3P-GZs">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -88,7 +85,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="RPl-fM-98G"/>
                     <connections>
-                        <outlet property="MemeImageView" destination="Ss5-3P-GZs" id="Psd-xO-A5D"/>
+                        <outlet property="memeImageView" destination="Ss5-3P-GZs" id="Psd-xO-A5D"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rpp-YO-4mC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -165,7 +162,6 @@
                     <navigationItem key="navigationItem" title="Sent Memes" id="U6J-eP-kqL"/>
                     <connections>
                         <outlet property="flowLayout" destination="ZFv-Pf-2mC" id="qqb-Na-QHy"/>
-                        <segue destination="SrR-kh-MST" kind="show" identifier="cvToDetailsSegue" id="iG7-0T-Bmb"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gUQ-j1-4H4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -272,9 +268,6 @@
             <point key="canvasLocation" x="1599" y="94"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="AL0-AC-GLt"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="camera.fill" catalog="system" width="128" height="96"/>
         <image name="photo.fill" catalog="system" width="128" height="93"/>

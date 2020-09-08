@@ -11,12 +11,12 @@ import UIKit
 //private let reuseIdentifier = K.reuseableCollectionCellId
 
 class MemeCollectionViewController: UICollectionViewController {
+    
+    // Properties
+    
     var memes: [Meme]! {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         return appDelegate.memes
-    }
-    var tests: [String]! {
-        return (UIApplication.shared.delegate as! AppDelegate).tests
     }
     
     @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
@@ -25,6 +25,7 @@ class MemeCollectionViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -42,14 +43,13 @@ class MemeCollectionViewController: UICollectionViewController {
         // Add createMeme button in tab bar
         let rtBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(MemeCollectionViewController.navigateToMemeEditor))
         navigationItem.setRightBarButton(rtBarButtonItem, animated: true)
-
         collectionView?.reloadData()
     }
 
     // MARK: - UICollectionViewDataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tests.count
+        return memes.count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -57,18 +57,18 @@ class MemeCollectionViewController: UICollectionViewController {
     
         // Configure the cell
         if let image = cell.imageView {
-            image.image = UIImage(named: "test")
+            image.image = memes[indexPath.row].imageEdited
         }
         
         return cell
     }
 
-    // MARK: UICollectionViewDelegate
-
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        performSegue(withIdentifier: K.goToDetailsFromCVSegue, sender: self)
+        let memeDetailVC = storyboard!.instantiateViewController(withIdentifier: K.memeDetailVCId) as! MemeDetailViewController
+        memeDetailVC.meme = memes[indexPath.row]
+        navigationController!.pushViewController(memeDetailVC, animated: true)
     }
-    
+
     // MARK: - Navigation
     
     @objc func navigateToMemeEditor() {

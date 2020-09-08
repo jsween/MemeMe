@@ -9,13 +9,11 @@
 import UIKit
 
 class MemeDetailViewController : UIViewController {
-//    var meme: Meme!
-    @IBOutlet weak var MemeImageView: UIImageView!
+    var meme: Meme!
+    @IBOutlet weak var memeImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        MemeImageView.image = UIImage(named: "test")
-//        imageView.image = meme.ImageEdited
+        memeImageView.image = meme.imageEdited
     }
-    
 }
