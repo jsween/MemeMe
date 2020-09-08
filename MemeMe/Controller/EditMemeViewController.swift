@@ -63,13 +63,18 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
     
     // MARK: - Helpers
     
-    func saveMeme() -> Meme {
+    func saveMeme() -> Meme? {
         
-        let meme = Meme(textTop: topTF.text!, textBottom: bottomTF.text!, imageOrginal: imageIV.image!, imageEdited: memeImage)
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.memes.append(meme)
+        if let image = imageIV.image {
+            let meme = Meme(textTop: topTF.text!, textBottom: bottomTF.text!, imageOrginal: image, imageEdited: memeImage)
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.memes.append(meme)
+            print("meme appended")
+            
+            return meme
+        }
         
-        return meme
+        return nil
     }
     
     func generateMemedImage() -> UIImage {
@@ -202,6 +207,10 @@ class EditMemeViewController: UIViewController, UIImagePickerControllerDelegate,
             }
         }
         self.present(aVC, animated: true, completion: nil)
+        aVC.completionWithItemsHandler = {
+            (activity, success, items, error) in
+            self.dismiss(animated: true, completion: nil)
+        }
     }
 }
 

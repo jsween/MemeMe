@@ -25,6 +25,7 @@ class MemeTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = 75.0
         tableView.reloadData()
+        print("There are \(memes.count) memes")
     }
 
     // MARK: - Table view data source

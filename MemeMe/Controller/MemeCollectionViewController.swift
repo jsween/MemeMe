@@ -37,6 +37,8 @@ class MemeCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
         collectionView?.reloadData()
+        print("There are \(memes.count) memes")
+
     }
 
     // MARK: - UICollectionViewDataSource
