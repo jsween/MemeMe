@@ -9,11 +9,11 @@
 import UIKit
 
 class MemeDetailViewController : UIViewController {
-    var meme: Meme!
+    var detailMeme: Meme!
     @IBOutlet weak var memeImageView: UIImageView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        memeImageView.image = meme.imageEdited
+    override func viewWillAppear(_ animated: Bool) {
+        memeImageView.image = detailMeme.imageEdited
+        tabBarController?.tabBar.isHidden = true
     }
 }

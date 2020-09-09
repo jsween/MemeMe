@@ -23,6 +23,8 @@ class SentMemesTableViewController: UITableViewController {
         tableView.separatorStyle = .none
         tableView.rowHeight = 80.0
         tableView.reloadData()
+        tabBarController?.tabBar.isHidden = false
+        navigationController?.isNavigationBarHidden = false
     }
 
     // MARK: - Table view data source
@@ -45,7 +47,7 @@ class SentMemesTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let memeDetailVC = storyboard!.instantiateViewController(withIdentifier: K.memeDetailVCId) as! MemeDetailViewController
-        memeDetailVC.meme = memes[indexPath.row]
+        memeDetailVC.detailMeme = memes[indexPath.row]
         navigationController!.pushViewController(memeDetailVC, animated: true)
     }
     

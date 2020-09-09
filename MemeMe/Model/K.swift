@@ -14,9 +14,6 @@ struct K {
     static let reuseableCollectionCellId = "MemeCVCell"
     static let memeDetailVCId = "MemeDetailViewController"
     // Controllers
-    static let editMemeId = "EditMemeViewController"
-    // Segues
-    static let goToDetailsSegue = "goToMemeDetails"
-    
+    static let editMemeId = "EditMemeViewController"    
     
 }

@@ -38,7 +38,7 @@ class SentMemesCollectionViewController: UICollectionViewController {
         flowLayout.itemSize = CGSize(width: dimension, height: dimension)
         
         collectionView?.reloadData()
-        print("There are \(memes.count) memes")
+        tabBarController?.tabBar.isHidden = false
         
         // Add createMeme button in tab bar
         let rtBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(SentMemesCollectionViewController.navigateToMemeEditor))
@@ -65,14 +65,14 @@ class SentMemesCollectionViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let memeDetailVC = storyboard!.instantiateViewController(withIdentifier: K.memeDetailVCId) as! MemeDetailViewController
-        memeDetailVC.meme = memes[indexPath.row]
+        memeDetailVC.detailMeme = memes[indexPath.row]
         navigationController!.pushViewController(memeDetailVC, animated: true)
     }
 
     // MARK: - Navigation
     
     @objc func navigateToMemeEditor() {
-        let memeEditorController = storyboard?.instantiateViewController(withIdentifier: K.editMemeId) as! EditMemeViewController
+        let memeEditorController = storyboard?.instantiateViewController(withIdentifier: K.editMemeId) as! MemeEditorViewController
         self.present(memeEditorController, animated: true, completion: nil)
     }
 
