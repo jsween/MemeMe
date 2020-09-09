@@ -6,7 +6,7 @@
 
 This app allows a user to take a new photo or import a photo in order to generate a meme
 
-![](screenShot.png)
+![](screenshot.png)
 
 ## Features
 1. Import a photo or take a new photo
