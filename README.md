@@ -1,4 +1,4 @@
-# MemeMe 1.0
+# MemeMe 2.0
 > Meme Generating App
 
 [![Swift Version][swift-image]][swift-url]
@@ -12,6 +12,8 @@ This app allows a user to take a new photo or import a photo in order to generat
 1. Import a photo or take a new photo
 2. Edit 2 text fields to generate a Meme
 3. Share Meme with contacts 
+4. Display sent memes in a table or collection view
+5. View sent memes in a detailed view
 
 ## Requirements 
 - iOS 13.5+
